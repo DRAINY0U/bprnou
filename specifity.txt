@@ -1,0 +1,37 @@
+Analiza Specificității CSS - Lab 4
+
+1. Analiza paragrafelor (A, B, C, D):
+
+Paragraful A:
+- Primește proprietățile din selectorul de element 'p' (color: gray, font-size: 1rem, font-family: Georgia, etc.).
+- Proveniență: Element selector (Scor: 0,0,1).
+
+Paragraful B:
+- Se potrivește cu 'p' și '.info'.
+- Primește proprietățile de la '.info' (color: steelblue, font-size: 1.25rem, etc.) deoarece clasa are specificitate mai mare decât elementul.
+- Proveniență: Class selector (Scor: 0,1,0) câștigă în fața elementului (0,0,1). Păstrează 'line-height' de la 'p' deoarece nu este redefinit în '.info'.
+
+Paragraful C:
+- Se potrivește cu 'p' și '#warning'.
+- Primește proprietățile de la '#warning' (color: darkred, font-style: italic, etc.).
+- Proveniență: ID selector (Scor: 1,0,0) câștigă în fața elementului (0,0,1).
+
+Paragraful D:
+- Se potrivește cu 'p', '.info', '#warning' și '#warning.info'.
+- Primește culorile și fundalul de la '#warning.info' deoarece este cel mai specific selector.
+- Proveniență: Combinație ID + Clasă (Scor: 1,1,0).
+
+2. Întrebări specifice pentru Paragraful D:
+
+- Culoarea: Browser-ul va folosi valoarea 'darkorange'. 
+  Motiv: Selectorul '#warning.info' are cel mai mare scor de specificitate (1 ID + 1 clasă = 110 puncte). Chiar dacă și '#warning' (100 pct), '.info' (10 pct) și 'p' (1 pct) definesc culoarea, regula cu scorul cel mai mare câștigă întotdeauna.
+
+- Font-family: Browser-ul va folosi 'Courier New', monospace.
+  Motiv: Deși '#warning.info' are specificitatea cea mai mare, acesta NU definește proprietatea 'font-family'. În acest caz, browser-ul caută în josul ierarhiei de specificitate până găsește primul selector care definește proprietatea. Următorul ca putere este '#warning' (ID selector), care definește fontul ca fiind 'Courier New'. Regulile din '.info' și 'p' sunt ignorate pentru că au specificitate mai mică decât ID-ul.
+
+3. Experimentul cu h1 (External vs Internal CSS):
+
+Pasul 1 (External CSS): În 'style.css' am definit h1 cu albastru. Rezultatul: titlul apare albastru.
+Pasul 2 (Internal CSS): Am adăugat în <head> un tag <style> unde am pus h1 cu culoarea roșie. 
+Rezultat: Titlul devine roșu.
+Explicație: Ambele reguli folosesc același selector de element (h1), deci au aceeași specificitate (0,0,1). În caz de egalitate, se aplică regula "Cascading": ultima regulă citită de browser câștigă. Deoarece tag-ul <style> din head este plasat după link-ul către fișierul extern, regula internă o suprascrie pe cea externă.

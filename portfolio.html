@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofoliu - Barul Pe Roți</title>
+    <meta name="description"
+        content="Gestionează și vizualizează portofoliul de evenimente și proiecte Barul Pe Roți. Adaugă proiecte noi folosind formularul nostru accesibil.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .error-message {
+            color: #d93025;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+            font-weight: 500;
+        }
+
+        .error-message:not(:empty) {
+            display: block;
+        }
+
+        .invalid-field {
+            border-color: #d93025 !important;
+            background-color: #fce8e6;
+        }
+
+        .invalid-field:focus {
+            box-shadow: 0 0 0 3px rgba(217, 48, 37, 0.2) !important;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .thumbnail-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+        }
+
+        .actions-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-reset {
+            background-color: #7f8c8d;
+        }
+
+        .btn-reset:hover {
+            background-color: #95a5a6;
+        }
+
+        .active-nav {
+            background: rgba(255, 255, 255, 0.2) !important;
+            border-bottom: 3px solid var(--white);
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Salt la conținutul principal</a>
+
+    <header>
+        <h1>Portofoliu Proiecte Barul Pe Roți</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Acasă</a></li>
+            <li><a href="despre.html">Despre Noi</a></li>
+            <li><a href="pachete.html">Pachete și Prețuri</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="portfolio.html" class="active-nav">Portofoliu</a></li>
+            <li><a href="card.html">Profil</a></li>
+            <li><a href="overview.html">Overview</a></li>
+            <li><a href="chatbot.html">Chatbot</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <section>
+            <h2>Adaugă un Proiect Nou în Portofoliu</h2>
+            <p>Completează formularul de mai jos pentru a înregistra un nou proiect de bar mobil în lista noastră. Toate
+                câmpurile sunt obligatorii.</p>
+
+            <form id="project-form" novalidate>
+                <fieldset>
+                    <legend>Detalii Proiect Eveniment</legend>
+
+
+                    <div class="form-group">
+                        <label for="project-name">Nume Proiect:</label>
+                        <input type="text" id="project-name" name="name" required minlength="3"
+                            aria-describedby="name-error" aria-required="true">
+                        <div id="name-error" class="error-message" role="alert"></div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="project-desc">Descriere Eveniment (min. 10 caractere):</label>
+                        <textarea id="project-desc" name="description" rows="4" required minlength="10"
+                            aria-describedby="desc-error" aria-required="true"></textarea>
+                        <div id="desc-error" class="error-message" role="alert"></div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="project-url">Link Prezentare/Video (URL valid):</label>
+                        <input type="url" id="project-url" name="url" placeholder="https://exemplu.ro" required
+                            aria-describedby="url-error" aria-required="true">
+                        <div id="url-error" class="error-message" role="alert"></div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="event-type">Tip Eveniment:</label>
+                        <select id="event-type" name="type" required aria-describedby="type-error" aria-required="true">
+                            <option value="">Alege tipul de eveniment...</option>
+                            <option value="Nuntă">Nuntă</option>
+                            <option value="Botez">Botez</option>
+                            <option value="Corporate">Corporate</option>
+                            <option value="Petrecere Privată">Petrecere Privată</option>
+                        </select>
+                        <div id="type-error" class="error-message" role="alert"></div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="completion-date">Dată Finalizare Eveniment:</label>
+                        <input type="date" id="completion-date" name="date" required aria-describedby="date-error"
+                            aria-required="true">
+                        <div id="date-error" class="error-message" role="alert"></div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="thumbnail-select">Selectează Imagine Portofoliu:</label>
+                        <select id="thumbnail-select" name="thumbnail" required aria-describedby="thumbnail-error"
+                            aria-required="true">
+                            <option value="cocktail_thumbnail.png">Meniu Cocktail Clasic (Implicit)</option>
+                            <option value="pfp.jpg">Poză Profil Manager</option>
+                        </select>
+                        <div id="thumbnail-error" class="error-message" role="alert"></div>
+                    </div>
+
+                    <div class="actions-group">
+                        <button type="submit">Adaugă Proiect</button>
+                        <button type="reset" class="btn-reset">Resetează</button>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+
+        <section>
+            <h2>Proiecte Înregistrate</h2>
+            <div class="table-responsive">
+                <table id="projects-table">
+                    <caption>Lista proiectelor din portofoliul Barul Pe Roți</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Thumbnail</th>
+                            <th scope="col">Nume Proiect</th>
+                            <th scope="col">Descriere</th>
+                            <th scope="col">Link</th>
+                            <th scope="col">Tip Eveniment</th>
+                            <th scope="col">Dată Finalizare</th>
+                        </tr>
+                    </thead>
+                    <tbody id="projects-table-body">
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Barul Pe Roți.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('project-form');
+            const tableBody = document.getElementById('projects-table-body');
+
+            const initialProjects = [
+                {
+                    name: "Nuntă Elegantă Timișoara",
+                    description: "Serviciu complet de bar mobil cu cocktailuri premium personalizate pentru peste 150 de invitați.",
+                    url: "https://barulperoti.com",
+                    type: "Nuntă",
+                    date: "2026-05-15",
+                    thumbnail: "cocktail_thumbnail.png"
+                },
+                {
+                    name: "Gala Corporate Tech",
+                    description: "Eveniment de networking cu meniu personalizat de mocktail-uri și barman profesionist dedicat.",
+                    url: "https://barulperoti.com",
+                    type: "Corporate",
+                    date: "2026-05-28",
+                    thumbnail: "cocktail_thumbnail.png"
+                }
+            ];
+
+            let projects = JSON.parse(localStorage.getItem('bpr_projects')) || initialProjects;
+
+            function renderTable() {
+                tableBody.innerHTML = '';
+                projects.forEach(project => {
+                    const row = document.createElement('tr');
+
+                    row.innerHTML = `
+                        <td>
+                            <img src="${project.thumbnail}" alt="Thumbnail pentru ${project.name}" class="thumbnail-img" loading="lazy">
+                        </td>
+                        <td><strong>${escapeHTML(project.name)}</strong></td>
+                        <td>${escapeHTML(project.description)}</td>
+                        <td><a href="${escapeHTML(project.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(project.url)}</a></td>
+                        <td>${escapeHTML(project.type)}</td>
+                        <td>${escapeHTML(project.date)}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            }
+
+            function escapeHTML(str) {
+                return str.replace(/[&<>'"]/g,
+                    tag => ({
+                        '&': '&amp;',
+                        '<': '&lt;',
+                        '>': '&gt;',
+                        "'": '&#39;',
+                        '"': '&quot;'
+                    }[tag] || tag)
+                );
+            }
+
+            renderTable();
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                let firstInvalidField = null;
+                const errors = {
+                    'project-name': '',
+                    'project-desc': '',
+                    'project-url': '',
+                    'event-type': '',
+                    'completion-date': '',
+                    'thumbnail-select': ''
+                };
+
+                const nameInput = document.getElementById('project-name');
+                const descInput = document.getElementById('project-desc');
+                const urlInput = document.getElementById('project-url');
+                const typeInput = document.getElementById('event-type');
+                const dateInput = document.getElementById('completion-date');
+                const thumbInput = document.getElementById('thumbnail-select');
+
+                if (!nameInput.value.trim()) {
+                    errors['project-name'] = "Numele proiectului este obligatoriu.";
+                } else if (nameInput.value.trim().length < 3) {
+                    errors['project-name'] = "Numele proiectului trebuie să aibă cel puțin 3 caractere.";
+                }
+
+                if (!descInput.value.trim()) {
+                    errors['project-desc'] = "Descrierea proiectului este obligatorie.";
+                } else if (descInput.value.trim().length < 10) {
+                    errors['project-desc'] = "Descrierea trebuie să aibă cel puțin 10 caractere.";
+                }
+
+                if (!urlInput.value.trim()) {
+                    errors['project-url'] = "Adresa URL este obligatorie.";
+                } else {
+                    try {
+                        new URL(urlInput.value.trim());
+                    } catch (_) {
+                        errors['project-url'] = "Te rugăm să introduci o adresă URL validă (ex: https://exemplu.ro).";
+                    }
+                }
+
+                if (!typeInput.value) {
+                    errors['event-type'] = "Te rugăm să selectezi un tip de eveniment.";
+                }
+
+                if (!dateInput.value) {
+                    errors['completion-date'] = "Data finalizării este obligatorie.";
+                }
+
+                const errorMappings = {
+                    'project-name': 'name-error',
+                    'project-desc': 'desc-error',
+                    'project-url': 'url-error',
+                    'event-type': 'type-error',
+                    'completion-date': 'date-error',
+                    'thumbnail-select': 'thumbnail-error'
+                };
+
+                for (const [id, errorMsg] of Object.entries(errors)) {
+                    const inputEl = document.getElementById(id);
+                    const errorEl = document.getElementById(errorMappings[id]);
+
+                    if (errorMsg) {
+                        inputEl.classList.add('invalid-field');
+                        inputEl.setAttribute('aria-invalid', 'true');
+                        errorEl.textContent = errorMsg;
+                        if (!firstInvalidField) {
+                            firstInvalidField = inputEl;
+                        }
+                    } else {
+                        inputEl.classList.remove('invalid-field');
+                        inputEl.removeAttribute('aria-invalid');
+                        errorEl.textContent = '';
+                    }
+                }
+
+                if (firstInvalidField) {
+                    firstInvalidField.focus();
+                } else {
+
+                    const newProject = {
+                        name: nameInput.value.trim(),
+                        description: descInput.value.trim(),
+                        url: urlInput.value.trim(),
+                        type: typeInput.value,
+                        date: dateInput.value,
+                        thumbnail: thumbInput.value
+                    };
+
+                    projects.push(newProject);
+                    localStorage.setItem('bpr_projects', JSON.stringify(projects));
+                    renderTable();
+                    form.reset();
+
+                    document.querySelectorAll('.invalid-field').forEach(el => {
+                        el.classList.remove('invalid-field');
+                        el.removeAttribute('aria-invalid');
+                    });
+                    document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+
+                    alert("Proiectul a fost adăugat cu succes!");
+                }
+            });
+
+            form.addEventListener('reset', () => {
+                document.querySelectorAll('.invalid-field').forEach(el => {
+                    el.classList.remove('invalid-field');
+                    el.removeAttribute('aria-invalid');
+                });
+                document.querySelectorAll('.error-message').forEach(el => {
+                    el.textContent = '';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

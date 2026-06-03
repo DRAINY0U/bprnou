@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Barul Pe Roți</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-notice {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 1rem;
+            border: 1px solid #ffeeba;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <h1>Rezervă Barul Mobil</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Acasă</a></li>
+            <li><a href="despre.html">Despre Noi</a></li>
+            <li><a href="pachete.html">Pachete și Prețuri</a></li>
+            <li><a href="contact.html" style="background: rgba(255, 255, 255, 0.2); border-bottom: 3px solid var(--white);">Contact</a></li>
+            <li><a href="portfolio.html">Portofoliu</a></li>
+            <li><a href="card.html">Profil</a></li>
+            <li><a href="overview.html">Overview</a></li>
+            <li><a href="chatbot.html">Chatbot</a></li>
+        </ul>
+    </nav>
+    <main id="main-content">
+        <h2>Cere o ofertă personalizată</h2>
+        <div class="contact-notice">
+            Răspundem la toate cererile în maxim 24 de ore lucrătoare.
+        </div>
+        <form action="#" method="post">
+            <fieldset>
+                <legend>Informații Contact</legend>
+                <div class="form-group">
+                    <label for="nume">Nume Complet:</label>
+                    <input type="text" id="nume" name="nume" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Adresa de Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subiect">Tip Eveniment:</label>
+                    <select id="subiect" name="subiect">
+                        <option value="nunta">Nuntă</option>
+                        <option value="corporate">Eveniment Corporate</option>
+                        <option value="privat">Petrecere Privată</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mesaj">Mesajul tău (detalii dată și locație):</label>
+                    <textarea id="mesaj" name="mesaj" rows="5" required></textarea>
+                </div>
+                <button type="submit">Trimite Cererea</button>
+            </fieldset>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2026 Barul Pe Roți.</p>
+    </footer>
+</body>
+</html>

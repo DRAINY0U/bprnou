@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot - Barul Pe Roți</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chatbot.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <h1>Asistent Virtual</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Acasă</a></li>
+            <li><a href="despre.html">Despre Noi</a></li>
+            <li><a href="pachete.html">Pachete și Prețuri</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="portfolio.html">Portofoliu</a></li>
+            <li><a href="card.html">Profil</a></li>
+            <li><a href="overview.html">Overview</a></li>
+            <li><a href="chatbot.html" style="background: rgba(255, 255, 255, 0.2); border-bottom: 3px solid var(--white);">Chatbot</a></li>
+        </ul>
+    </nav>
+    <main id="main-content">
+        <section style="text-align: center; margin-bottom: 2rem;">
+            <h2>Ai o întrebare rapidă?</h2>
+            <p>Chatbot-ul nostru te poate ajuta cu informații despre pachete, băuturi și rezervări.</p>
+        </section>
+        <div class="chat-container">
+            <div id="chat-messages"></div>
+            <form id="chat-form">
+                <input type="text" id="chat-input" placeholder="Scrie o întrebare (ex: pret, cocktail, contact)..." required>
+                <button type="submit">Trimite</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2026 Barul Pe Roți.</p>
+    </footer>
+    <script src="chatbot.js"></script>
+</body>
+</html>

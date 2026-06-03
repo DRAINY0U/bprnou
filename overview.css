@@ -1,0 +1,92 @@
+.overview-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: 
+        "profile skills"
+        "projects projects"
+        "contact contact";
+    gap: 2rem;
+    padding: 1rem;
+}
+
+#profile { grid-area: profile; }
+#skills { grid-area: skills; }
+#projects { grid-area: projects; }
+#contact { grid-area: contact; }
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+    background: #fdfaf1;
+    border: 2px solid #ff9f29;
+    border-radius: 12px;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.skill-tag {
+    background: #1a4d2e;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.project-card {
+    background: white;
+    padding: 1.5rem;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.project-card.featured {
+    background: #1a4d2e;
+    color: white;
+    border: none;
+    border-left: 5px solid #ff9f29;
+}
+
+.project-card.featured h3 {
+    color: #ff9f29;
+}
+
+@media (max-width: 768px) {
+    .overview-container {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "profile"
+            "skills"
+            "projects"
+            "contact";
+    }
+    
+    .profile-info img {
+        width: 150px;
+    }
+}
